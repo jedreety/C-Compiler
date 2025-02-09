@@ -1,0 +1,222 @@
+|| ===================================================
+||  Complete Language Feature Documentation (.gem)
+|| ===================================================
+
+|| ===================================================
+||  Module Imports
+|| ===================================================
+import &"file"
+import &dependence { className }
+
+|-- 
+This block comment demonstrates that our language
+supports module imports as well as dependency injection.
+--|
+
+|| ===================================================
+||  Constants and Variables
+|| ===================================================
+
+|| Constant declaration using @ (means the value is immutable)
+@uint32 constantNumber = 0
+
+|| Floating point variable
+f64 number2 = 0.0
+
+|| Multiple variable declarations in one line (using '|' to separate)
+u16 a = 0 | u16 b = 0
+
+|| ===================================================
+||  Iteration Constructs
+|| ===================================================
+
+|| Basic iter: the iterator has a default step of 1.
+|| The syntax is: iter ( iterSource | element ) [ ... ]
+iter ( 0..10 | i ) [
+    || In each iteration, 'i' takes a value from 0 to 10.
+    || You can also use new logical operators in expressions:
+    if ( i ?+ 5 ?? 3 ) [
+        || This condition uses ?+ (logical AND) and ?? (logical OR)
+        || Do something with i
+    ]
+]
+
+|| Iter with explicit step value.
+iter ( 1..20.2 | item ) [
+    || Here, the range "1..20.2" iterates from 1 to 20 with a step of 2.
+    || Process 'item' as needed.
+]
+
+|| Iteration over a vector with tuple destructuring.
+vec<u32> numbers = [
+    10, 20, 30, 40
+]
+
+iter ( numbers | (index, value) ) [
+    || In this loop, each element of the vector 'numbers' is destructured into
+    || 'index' and 'value' (for example, if your language supports tuple-like iteration).
+    || Do something with index and value.
+]
+
+|| Complex iterator expression using indexing and tuple extraction.
+iter ( vec[ (1, 2)*10 ].2 | (a, b) ) [
+    || This iterates over the .2 element of an indexed vector computed from (1,2)*10.
+    || 'a' and 'b' are destructured from each tuple.
+]
+
+|| ===================================================
+||  Loops and Conditionals
+|| ===================================================
+
+|| While loop example.
+while ( a < 100 ) [
+    a = a + 1
+]
+
+|| Boolean variable with a constant value.
+@bool isTrue = true
+
+|| if-else chain example.
+if ( isTrue ) [
+    || Do something if condition is true.
+]
+else if ( !isTrue ) [
+    || Do something else if condition is false.
+]
+else [
+    || Default branch.
+]
+
+|| ===================================================
+||  Enumerations
+|| ===================================================
+
+|| Simple enum definition.
+enum [
+    one(u32) = 1,
+    two(u16) = 2,
+    three(u8) = 3
+]
+
+|| Parameterized enum definition.
+enum Number1( u32 ) [
+    one = 1,
+    two(u8) = 2,
+    three = 3
+]
+
+|| Using enums:
+u32 enumValue = three
+Number1 enumInstance = three
+
+|| Generic enum example.
+enum #Number2<T> ( T ) [
+    one,
+    two(u32) = 2, 
+    three
+]
+
+|| Assign a generic enum value using constructor-like syntax.
+Number2<u32> genericEnum = Number2::three(3)
+
+|| ===================================================
+||  Compare Construct (Switch-like)
+|| ===================================================
+
+compare ( (a + 2) * 4 ) [
+    on ( b ) [
+        || This branch executes when the compared value equals 'b'
+    ]
+    on ( functionName( &self ) ) [
+        || This branch executes when it equals the result of functionName(&self)
+    ]
+    default [
+        || Default branch if no other case matches.
+    ]
+]
+
+|| ===================================================
+||  Class Definitions and Inheritance
+|| ===================================================
+
+|| A simple class declaration.
+#className [
+    || Members are private by default unless specified.
+
+    public
+
+        || Default constructor.
+        #className () [
+            || Constructor body.
+        ]
+
+        || Overloaded constructor with parameters.
+        #className ( str name(name_), u32 age(age_) ) [
+            || Initialize name_ and age_.
+        ]
+
+        || A method returning a u32.
+        #getId () -> u32 [
+            -> Id_
+        ]
+
+    private
+
+        @u32 Id_
+        str name_
+        u32 age_
+]
+
+|| Function definition with tuple return type.
+#functionName ( u32 a, u32 b ) -> tuple( u32 * 3 ) [
+    || Example function performing arithmetic operations.
+    -> ( a + b, a - b, a * b )
+]
+
+|| Generic function using a type parameter.
+#functionName<T> ( T a ) -> T [
+    -> a
+]
+
+|| Abstract method declaration: the @ means the function must be implemented in child classes.
+#className<T: GenericParam>  [
+    public
+
+        @#functionName ( u32 var ) -> u32 
+
+    private
+
+        T var_
+]
+
+|| Class inheritance using the <-> notation.
+#className2 <-> className( u32 ) [
+    public 
+
+        #functionName ( u32 var ) -> u32 [
+            -> var + var_
+        ]
+
+        #getReference () -> self [
+            -> self
+        ]
+]
+
+|| ===================================================
+||  Pointer Operations
+|| ===================================================
+
+|| Declare a immutable pointer to a u32.
+u32* ap = &@ a
+
+|| Using the pointer automatically dereferences it:
+u32 ar = ap
+
+|| Declare a mutable pointer (only one mutable reference allowed).
+u32* apMut = & a || Note: Only one mutable reference can exist.
+destroy apMut
+
+|| Delete a variable (destroy all references).
+delete a
+
+|| Primitive types (u8, u16, u32, u64, i8, i16, i32, i64, f32, f64) still exist.
