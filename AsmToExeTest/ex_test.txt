@@ -1,1 +1,0 @@
-nasm -f win64 test.asm -o test.obj && gcc test.obj -o test.exe
