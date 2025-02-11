@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mehdi.mazouz1\\Documents\\GitHub\\GemCompiler\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{99EC6A55-05A2-E34A-8E96-DD21FA4ADA4E}|GemCompiler\\GemCompiler.vcxproj|C:\\Users\\mehdi.mazouz1\\Documents\\GitHub\\GemCompiler\\GemCompiler\\Source\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{99EC6A55-05A2-E34A-8E96-DD21FA4ADA4E}|GemCompiler\\GemCompiler.vcxproj|solutionrelative:GemCompiler\\Source\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\mehdi.mazouz1\\Documents\\GitHub\\GemCompiler\\GemCompiler\\Source\\main.cpp",
+              "RelativeDocumentMoniker": "GemCompiler\\Source\\main.cpp",
+              "ToolTip": "C:\\Users\\mehdi.mazouz1\\Documents\\GitHub\\GemCompiler\\GemCompiler\\Source\\main.cpp",
+              "RelativeToolTip": "GemCompiler\\Source\\main.cpp",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAC0AAACgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-11T10:23:26.788Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

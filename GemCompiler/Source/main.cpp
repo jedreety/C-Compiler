@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <string>
+
 #include "Token/Token.h"
 #include "Assembler/Assembly.h"
 
@@ -43,6 +43,7 @@ int main(int argc, char* argv[]) {
 
     }
 
+    system("set PATH=%PATH%;../Setup/Vendor/MinGW/bin && set PATH=%PATH%;../Setup/Vendor/Binaries/Nasm && cd outASM/ && nasm -f win64 out.asm -o out.obj && gcc2 out.obj -o out.exe");
 
     return 0;
 }
